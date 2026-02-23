@@ -18,7 +18,7 @@ if not API_KEY:
 
 
 URL_API = "https://api.openweathermap.org/data/2.5/weather"
-NOM_BASE_DONNEES = "weather_data1.db"
+NOM_BASE_DONNEES = "weather_data.db"
 
 
 villes = ['Dakar','Libreville', 'Paris', 'New York', 'Tokyo', 'London']
@@ -82,7 +82,7 @@ print("1. Conversion des timestamps")
 
 # Transformation 2: Calculer la durée du jour
 df['duree_jour_heures'] = ((df['coucher_soleil'] - df['lever_soleil']) / 3600).round(2)
-print(" 2. Calcul de la durée du jour")
+print("2. Calcul de la durée du jour")
 
 # Transformation 3: Catégorie de température
 def categorie_temp(temp):
@@ -108,15 +108,13 @@ print("4. Calcul de l'indice de confort")
 df['visibilite_km'] = (df['visibilite'] / 1000).round(2)
 print("5. Conversion visibilité en km")
 
-# Transformation 6: Ajouter un ID
-df['id'] = range(1, len(df) + 1)
-print("6. Ajout des identifiants")
-
 # Transformation 7: Ajouter la date d'extraction
 df['date_extraction'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-print("7. Ajout de la date d'extraction")
+print("6. Ajout de la date d'extraction")
 
-print(f"\n{len(df)} enregistrements transformés")
+
+
+
 
 # ====================================
 # ÉTAPE 3 : CHARGEMENT (Load)
